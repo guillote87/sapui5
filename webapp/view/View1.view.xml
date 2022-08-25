@@ -1,0 +1,168 @@
+<mvc:View controllerName="project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+		
+   	<l:VerticalLayout width="100%">
+	<Button press="onPress" text="Lista"></Button>
+	<Button press="onCrud" text="Crud"></Button>
+		<fb:FilterBar id="filterBar"  header="Header"
+		                reset="onReset" search="onSearch" clear="onClear" cancel="onCancel" 
+		                filtersDialogClosed = "onFiltersDialogClosed"
+		                showRestoreButton="true" showClearButton="true">
+
+			<fb:filterGroupItems>
+				<fb:FilterGroupItem groupName="G1" groupTitle="Group1" visibleInFilterBar="true" name="A1" label="SAP ID" labelTooltip="Tooltip GroupItem Example">
+					<fb:control>
+						<Input id="idsap" type="Text"  change="onChange"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="G2" groupTitle="Group2" visibleInFilterBar="true" name="A2" label="LISTADO" labelTooltip="Tooltip GroupItem Example">
+					<fb:control>
+						<Input id="idlistado" type="Text"  change="onChange"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+			</fb:filterGroupItems>
+	    </fb:FilterBar>
+	</l:VerticalLayout>
+		<Table id="idProductsTable"
+		inset="false"
+		items="{
+			path: 'material>/MaterialesSet',
+        suspended: true
+		}">
+	
+		<columns>
+			<Column
+				width="12em">
+				<Text text="DOC COMP." />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="FECHA "/>
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<Text text="CLIENTE"/>
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="NOMBRE" />
+			</Column>
+			<Column
+				hAlign="End">
+				<Text text="ESTADO" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text
+						text="{DOC_COMP}"/>
+					<Text
+						text="{FECHA_DOC}" />
+					<Text
+						text="{CLIENTE}" />
+					<Text
+						text="{NOMBRE}" />	
+					<Text
+						text="{ESTADO_DOCUMENTO}" />					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	
+	
+	<Table id="table2"
+		inset="false"
+		items="{
+			path: 'datosVarios>/'
+		   }"
+		>
+
+			<headerToolbar>
+				<OverflowToolbar>
+					<Title text="{i18n>balance}" level="H2"/>
+					<ToolbarSpacer/>
+					<SearchField liveChange="handleLiveSearch" width="30%"/>
+					<Button tooltip="{i18n>sortSettingsTooltip}" icon="sap-icon://sort" press="handleSortButtonPressed"/>
+					<Button tooltip="{i18n>filterSettingsTooltip}" icon="sap-icon://filter" press="handleFilterButtonPressed"/>
+					<Button id="settings" icon="sap-icon://action-settings"/>
+					<Button icon="sap-icon://excel-attachment" press="onExport"/>
+				</OverflowToolbar>
+			</headerToolbar>
+		<columns>
+		<Column
+				width="12em">
+				<Text text="NOMBRE" />
+			</Column>
+		<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="FECHA "/>
+			</Column>
+			
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="DOC_COMP"/>
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<Text text="VENCIMIENTO"/>
+			</Column>
+		
+			<Column
+				hAlign="End">
+				<Text text="ESTADO" />
+				</Column>
+					<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="IMPORTE" />
+			</Column>
+				<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="LINK" />
+			</Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text
+						text="{datosVarios>NOMBRE}" />
+				    <Text
+						text="{datosVarios>FECHA_DOC}" />
+					<Text
+						text="{datosVarios>DOC_COMP}"/>
+					<Text
+						text="{datosVarios>VENC_NETO}" />
+					<Text
+						text="{datosVarios>ESTADO_DOCUMENTO}"/>
+					<ObjectNumber number="{ parts: [{path: 'datosVarios>IMPORTE_ML'}, {path: 'datosVarios>MONEDA'}], formatter: '.formatter.stringToFloat' }"
+						inverted="true"
+						state="{= ${datosVarios>IMPORTE_ML} > 300 ? 'Error' : 'Success' }"/>
+					<core:Icon src="sap-icon://pdf-attachment" alt="Invoice" press="handleLink" app:link="{datosVarios>LINK_DOC}"
+							visible="{= (${datosVarios>LINK_DOC} !== '') }"/>			
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+    </Page>
+</mvc:View>

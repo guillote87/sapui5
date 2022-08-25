@@ -1,0 +1,46 @@
+<mvc:View controllerName="project1.controller.Crud" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <Page id="crud" title="{i18n/crudtitle}">
+        <content>
+            <Button press="onSearch" text="Lista"></Button>
+            <DateTimePicker value="{
+				path: '/dtValue',
+				type: 'sap.ui.model.type.DateTime'}"
+                width="50%" />
+            <fb:FilterBar id="filterBar" header="Header" reset="onReset" search="onSearch" clear="onClear"
+                cancel="onCancel" filtersDialogClosed="onFiltersDialogClosed" showRestoreButton="true"
+                showClearButton="true">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem groupName="G1" groupTitle="Group1" visibleInFilterBar="true" name="A1"
+                        label="Fecha" labelTooltip="Tooltip GroupItem Example">
+                        <fb:control>
+                            <Input id="fecha" type="Text" value="{
+				            path: '/dtValue',
+				            type: 'sap.ui.model.type.DateTime',
+				            formatOptions: {
+				            	pattern: 'yyyy-MM-dd\'T\'HH:mm:ss'
+				                }
+			                    }" change="onChange" />
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+            <List id="preciosList" items="{model: 'precios', path: '/PreciosSet',
+                         suspended:true}" growing="true" growingThreshold="5" growingScrollToLoad="false">
+                <items>
+                 <StandardListItem   title="{Material}" description="{Descripcion}"></StandardListItem>
+                </items>
+            </List>
+            <VBox>
+                <Input placeholder="Enter the ID for the category" id="idinput" />
+                <Input placeholder="Enter the category name" id="nameinput" />
+                <Button text="Create" press="createData" />
+                <Button text="Update" press="updateData" />
+                <Button text="Delete" press="deleteData" />
+            </VBox>
+        </content>
+
+
+    </Page>
+</mvc:View>

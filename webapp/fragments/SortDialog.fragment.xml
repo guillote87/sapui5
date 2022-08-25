@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		id="SortDialog" 
+		confirm="handleSortDialogConfirm">
+		<sortItems>
+			<ViewSettingsItem text="{i18n>date}" key="FECHA_DOC" selected="true" />
+			<ViewSettingsItem text="{i18n>document}" key="DOC_COMP" />
+			<ViewSettingsItem text="{i18n>dueDate}" key="VENCIMIENTO" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>
