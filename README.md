@@ -7,7 +7,6 @@
 |**Generation Platform**<br>Visual Studio Code|
 |**Floorplan Used**<br>simple|
 |**Service Type**<br>OData Url|
-|**Service URL**<br>https://soaqa.sap.navent.com:44300/sap/opu/odata/sap/ZGW_REST_SERVICES/
 |**Module Name**<br>project1|
 |**Application Title**<br>App Title|
 |**Namespace**<br>|
