@@ -25,7 +25,7 @@
           "odataVersion": "2.0"
         }
       },
-      "materialService":{
+      "materialService": {
         "uri": "/sap/opu/odata/sap/ZGW_INFO_MATERIAL_SRV/",
         "type": "OData",
         "settings": {
@@ -40,6 +40,15 @@
         "settings": {
           "annotations": [],
           "localUri": "localService/ZGW_LISTA_PRECIOS_SRV/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "testing": {
+        "uri": "/V2/(S(t3gpx4j3yfnmlsqommqv1ev1))/OData/OData.svc/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/OData/OData.svc/metadata.xml",
           "odataVersion": "2.0"
         }
       }
@@ -103,14 +112,18 @@
         "dataSource": "precioService",
         "preload": true,
         "settings": {}
+      },
+      "testing": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "dataSource": "testing",
+        "preload": true,
+        "settings": {}
       }
     },
     "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
-        }
-      ]
+      "css": [{
+        "uri": "css/style.css"
+      }]
     },
     "routing": {
       "config": {
@@ -122,8 +135,7 @@
         "controlId": "app",
         "clearControlAggregation": false
       },
-      "routes": [
-        {
+      "routes": [{
           "name": "RouteView1",
           "pattern": ":?query:",
           "target": [
@@ -131,9 +143,9 @@
           ]
         },
         {
-          "name":"Crud",
+          "name": "Crud",
           "pattern": "crud",
-          "target":[
+          "target": [
             "Crud"
           ]
         }
@@ -146,9 +158,9 @@
           "viewId": "View1",
           "viewName": "View1"
         },
-        "Crud":{
+        "Crud": {
           "viewType": "XML",
-          "transition":"slide",
+          "transition": "slide",
           "viewId": "Crud",
           "viewName": "Crud"
         }

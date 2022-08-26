@@ -25,24 +25,9 @@ sap.ui.define([
                 this._data["dtPattern"] = oLocaleData.getCombinedDateTimePattern("medium", "medium");
                 oModel = new JSONModel(this._data);
                 this.getView().setModel(oModel);
-            },
-            createData: function () {
-                var that = this;
-                this.getOwnerComponent().getModel("material")
-                var odataModel = new sap.ui.model.odata.v2.ODataModel(material);
-                odataModel.read("/MaterialesSet", {
-                    success: function (oData, oResponse) {
-                        MessageBox.success("Success");
-                        console.log(oData)
-                    },
-                    error: function (oError) {
-                        MessageBox.error("Error");
-                    }
-                });
-                this.getView().setModel(odataModel);
-
-            }, updateData: function () {
-                var list = this.getView().byId("list");
+            }, 
+            updateData: function () {
+                var list = this.getView().byId("testList");
                 var selItem = list.getSelectedItem();
                 var title = selItem.getTitle();
                 var description = selItem.getDescription();
@@ -53,7 +38,7 @@ sap.ui.define([
                 };
 
                 var path = "/Categories(" + title + ")";
-                var odataModel = this.getView().getModel();
+                var odataModel = this.getView().getModel("testing");
                 // @ts-ignore
                 odataModel.update(path, payload, {
                     success: function (data, response) {
@@ -63,14 +48,15 @@ sap.ui.define([
                         MessageBox.error("Error while updating the data");
                     }
                 });
-            }, createData: function () {
+            },
+             createData: function () {
                 var ID = this.getView().byId("idinput").getValue();
                 var Name = this.getView().byId("nameinput").getValue();
                 var data = {
                     ID: parseInt(ID),
                     Name: Name
                 };
-                var odataModel = this.getView().getModel();
+                var odataModel = this.getView().getModel("testing");
                 odataModel.create("/Categories", data, {
                     success: function (data, response) {
                         MessageBox.success("Data successfully created");
@@ -82,11 +68,11 @@ sap.ui.define([
             },
 
             deleteData: function () {
-                var list = this.getView().byId("list");
+                var list = this.getView().byId("testList");
                 var selItem = list.getSelectedItem();
                 var title = selItem.getTitle();
                 var path = "/Categories(" + title + ")"; ///Categories(3);
-                var odataModel = this.getView().getModel();
+                var odataModel = this.getView().getModel("testing");
                 odataModel.remove(path, {
                     success: function (data, response) {
                         MessageBox.success("Deleted data");

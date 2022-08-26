@@ -3,11 +3,11 @@
 
     <Page id="crud" title="{i18n/crudtitle}">
         <content>
-            <Button press="onSearch" text="Lista"></Button>
+            <Button press="onSearch" text="Cargar Lista"></Button>
             <DateTimePicker value="{
 				path: '/dtValue',
 				type: 'sap.ui.model.type.DateTime'}"
-                width="50%" />
+                width="30%" />
             <fb:FilterBar id="filterBar" header="Header" reset="onReset" search="onSearch" clear="onClear"
                 cancel="onCancel" filtersDialogClosed="onFiltersDialogClosed" showRestoreButton="true"
                 showClearButton="true">
@@ -30,6 +30,11 @@
                          suspended:true}" growing="true" growingThreshold="5" growingScrollToLoad="false">
                 <items>
                  <StandardListItem   title="{Material}" description="{Descripcion}"></StandardListItem>
+                </items>
+            </List>
+              <List id="testList" items="{model: 'testing', path: '/Categories'}"  mode="SingleSelect" growing="true" growingThreshold="5" growingScrollToLoad="false">
+                <items>
+                 <StandardListItem   title="{testing>ID}" description="{testing>Name}"></StandardListItem>
                 </items>
             </List>
             <VBox>
