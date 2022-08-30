@@ -25,62 +25,6 @@ sap.ui.define([
                 this._data["dtPattern"] = oLocaleData.getCombinedDateTimePattern("medium", "medium");
                 oModel = new JSONModel(this._data);
                 this.getView().setModel(oModel);
-            }, 
-            updateData: function () {
-                var list = this.getView().byId("testList");
-                var selItem = list.getSelectedItem();
-                var title = selItem.getTitle();
-                var description = selItem.getDescription();
-                var Name = this.getView().byId("nameinput").getValue();
-                var payload = {
-                    ID: parseInt(title),
-                    Name: Name
-                };
-
-                var path = "/Categories(" + title + ")";
-                var odataModel = this.getView().getModel("testing");
-                // @ts-ignore
-                odataModel.update(path, payload, {
-                    success: function (data, response) {
-                        MessageBox.success("Successfully Updated");
-                    },
-                    error: function (error) {
-                        MessageBox.error("Error while updating the data");
-                    }
-                });
-            },
-             createData: function () {
-                var ID = this.getView().byId("idinput").getValue();
-                var Name = this.getView().byId("nameinput").getValue();
-                var data = {
-                    ID: parseInt(ID),
-                    Name: Name
-                };
-                var odataModel = this.getView().getModel("testing");
-                odataModel.create("/Categories", data, {
-                    success: function (data, response) {
-                        MessageBox.success("Data successfully created");
-                    },
-                    error: function (error) {
-                        MessageBox.error("Error while creating the data");
-                    }
-                });
-            },
-
-            deleteData: function () {
-                var list = this.getView().byId("testList");
-                var selItem = list.getSelectedItem();
-                var title = selItem.getTitle();
-                var path = "/Categories(" + title + ")"; ///Categories(3);
-                var odataModel = this.getView().getModel("testing");
-                odataModel.remove(path, {
-                    success: function (data, response) {
-                        MessageBox.success("Deleted data");
-                    },
-                    error: function (error) {
-                        MessageBox.error("Deletion failed");
-                    }
-                })
             },
             onSearch: function () {
                 var oModel = this.getView().getModel("precios")

@@ -1,0 +1,23 @@
+<mvc:View controllerName="project1.controller.Trip" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar"
+  xmlns:mvc="sap.ui.core.mvc">
+
+  <Page id="trip" title="{i18n/crudtitle}">
+    <VBox>
+      <Input placeholder="Enter the user Id" id="Name" />
+      <Input placeholder="Enter the user First name" id="Description" />
+   
+
+      <Button text="Create" press="createData" />
+      <Button text="Update" press="updateData" />
+      <Button text="Delete" press="deleteData" />
+    </VBox>
+    <List id="List" items="{model: 'testing', path: '/Categories'}" mode="SingleSelect" growing="true" growingThreshold="5"
+      growingScrollToLoad="false" >
+      <items>
+        <StandardListItem title="{testing>ID}" description="{testing>Name}" type="Active"
+						press=".onPress" ></StandardListItem>
+      </items>
+    </List>
+
+  </Page>
+</mvc:View>

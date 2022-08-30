@@ -18,9 +18,11 @@ server:
         backend:
           - path: /sap
             url: https://soaqa.sap.navent.com:44300
+          - path: /TripPinRESTierService
+            url: https://services.odata.org
           - path: /V2
             url: https://services.odata.org
-  
+   
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

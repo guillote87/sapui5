@@ -11,6 +11,7 @@
    	<l:VerticalLayout width="100%">
 	<Button press="onPress" text="Lista"></Button>
 	<Button press="onCrud" text="Crud"></Button>
+	<Button press="onTrip" text="Trip"></Button>
 		<fb:FilterBar id="filterBar"  header="Header"
 		                reset="onReset" search="onSearch" clear="onClear" cancel="onCancel" 
 		                filtersDialogClosed = "onFiltersDialogClosed"

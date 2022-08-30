@@ -17,12 +17,12 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZGW_REST_SERVICES/",
+        "uri": "/TripPinRESTierService/(S(oypfzauptc13hwou33ptjz23))/",
         "type": "OData",
         "settings": {
           "annotations": [],
           "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
+          "odataVersion": "4.0"
         }
       },
       "materialService": {
@@ -44,11 +44,20 @@
         }
       },
       "testing": {
-        "uri": "/V2/(S(t3gpx4j3yfnmlsqommqv1ev1))/OData/OData.svc/",
+        "uri": "/V2/(S(wqdvyxedslrefijxps1dsz2t))/OData/OData.svc/",
         "type": "OData",
         "settings": {
           "annotations": [],
           "localUri": "localService/OData/OData.svc/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ctacte": {
+        "uri": "/sap/opu/odata/sap/ZGW_REST_SERVICES/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/ZGW_REST_SERVICES/metadata.xml",
           "odataVersion": "2.0"
         }
       }
@@ -99,7 +108,12 @@
       "": {
         "dataSource": "mainService",
         "preload": true,
-        "settings": {}
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
       },
       "material": {
         "type": "sap.ui.model.odata.v2.ODataModel",
@@ -113,12 +127,20 @@
         "preload": true,
         "settings": {}
       },
-      "testing": {
+      
+        "testing": {
+          "type": "sap.ui.model.odata.v2.ODataModel",
+          "dataSource": "testing",
+          "preload": true,
+          "settings": {}
+        
+      },
+      "ctacte":{
         "type": "sap.ui.model.odata.v2.ODataModel",
-        "dataSource": "testing",
+        "dataSource": "ctacte",
         "preload": true,
         "settings": {}
-      }
+        }
     },
     "resources": {
       "css": [{
@@ -148,6 +170,12 @@
           "target": [
             "Crud"
           ]
+        }, {
+          "name": "Trip",
+          "pattern": "trip",
+          "target": [
+            "Trip"
+          ]
         }
       ],
       "targets": {
@@ -163,6 +191,12 @@
           "transition": "slide",
           "viewId": "Crud",
           "viewName": "Crud"
+        },
+        "Trip": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Trip",
+          "viewName": "Trip"
         }
       }
     },

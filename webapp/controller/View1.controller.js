@@ -22,7 +22,7 @@ sap.ui.define([
 
             },
             onSearch: function () {
-                var oModel = this.getView().getModel()
+                var oModel = this.getView().getModel("ctacte")
                 var oDataFilter = new Array()
                 var salesOrderTable = this.byId("idProductsTable")
 
@@ -66,7 +66,7 @@ sap.ui.define([
             onPress: function () {
                 var that = this
                
-                var oModel = this.oView.getModel()
+                var oModel = this.oView.getModel("ctacte")
 
                 var oDataFilter = new Array()
                
@@ -104,6 +104,11 @@ sap.ui.define([
                 MessageToast.show("Crud")
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                 oRouter.navTo("Crud");
+            },
+             onTrip: function(oEvent){
+                MessageToast.show("Trip")
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                oRouter.navTo("Trip");
             },
 
             handleLink: function (oEvent) {
