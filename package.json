@@ -10,6 +10,7 @@
   ],
   "main": "webapp/index.html",
   "dependencies": {
+    "gh-pages": "^4.0.0",
     "my-proxy": "^2.0.0"
   },
   "devDependencies": {

@@ -73,6 +73,7 @@ sap.ui.define([
                 })
             },
             onPress: function (oEvent) {
+               
                 let oCtx = oEvent.getSource().getBindingContext();
                
                 this.oView.byId("Name").setValue(oCtx.getProperty("Name"))

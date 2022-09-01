@@ -8,10 +8,11 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
 		
-   	<l:VerticalLayout width="100%">
+   	<l:HorizontalLayout class="sapUiContentPadding" width="100%">
 	<Button press="onPress" text="Lista"></Button>
 	<Button press="onCrud" text="Crud"></Button>
 	<Button press="onTrip" text="Trip"></Button>
+	</l:HorizontalLayout>
 		<fb:FilterBar id="filterBar"  header="Header"
 		                reset="onReset" search="onSearch" clear="onClear" cancel="onCancel" 
 		                filtersDialogClosed = "onFiltersDialogClosed"
@@ -30,7 +31,7 @@
 				</fb:FilterGroupItem>
 			</fb:filterGroupItems>
 	    </fb:FilterBar>
-	</l:VerticalLayout>
+	
 		<Table id="idProductsTable"
 		inset="false"
 		items="{
