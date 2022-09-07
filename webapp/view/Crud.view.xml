@@ -27,7 +27,11 @@
                 </fb:filterGroupItems>
             </fb:FilterBar>
             <List id="preciosList" items="{model: 'precios', path: '/PreciosSet',
-                         suspended:true}" growing="true" growingThreshold="5" growingScrollToLoad="false">
+                         suspended:true,
+                        sorter : {
+				path : 'Descripcion',
+				group : true
+			}}" growing="true"  growingScrollToLoad="false">
                 <items>
                  <StandardListItem   title="{Material}" description="{Descripcion}"></StandardListItem>
                 </items>
